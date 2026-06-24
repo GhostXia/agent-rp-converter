@@ -215,6 +215,12 @@ agent 会自动完成，无需用户手动过滤。
 
 ---
 
+## 参考文献
+
+- [Xerxes-2/tavern2agent](https://github.com/Xerxes-2/tavern2agent)（MIT）—— 把 SillyTavern 卡编译成 evented runtime 的动态层方案。本项目的"解包 / 审计 / 机制识别"思路受其启发；其术语（card-ir、reducers、event packs、CodeAct、两段式渲染、秘密边界）在 [docs/04](docs/04-audit-guide.md) 中用于对比说明。本项目是其**静态退化形态**，不复用其 runtime 代码。
+
+---
+
 ## 许可
 
 [MIT](LICENSE) © 2026 GhostXia
