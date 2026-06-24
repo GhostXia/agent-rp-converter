@@ -16,22 +16,31 @@
 
 ## 快速开始
 
-**默认路径**：
+分两段，**必须用两个 session**。转换 session 是脏的——塞着原始卡全文（含被剔除的机制）、agent 拆解推理、converter 正文；在里面直接开演会污染文风、让角色"看见"本该删掉的机制（越权全知）。所以转换归转换，演绎另起干净 session。
+
+### 第一段：转换（Session A）
 ```
-1. 新建独立 session（关闭 code/search/data 类 skill，避免污染）
-2. 会话开场调用一次元启动器，由它统一拉起三件套：
-   /rp-launcher
-   → 它指示 agent 调用 /character-<name> /preset-<name> /worldbook-<name>（可选）
-3. 输入剧情开头，观察角色是否在线、文风是否不僵
-4. 上下文被压缩后，重新 /rp-launcher
+1. 新建独立 session，调用 agent-rp-converter skill
+2. 把你的卡（PNG / JSON / 文本）丢给 agent
+3. agent 自动拆解 → 输出四件套：
+     character-<name>/  preset-<name>/  worldbook-<name>/  rp-launcher-<name>/
+   （机制自动剥离；剔除 >50% 时附降级声明）
+4. 装好四件套，二选一：
+   · 安装：每个写进 agent skills 目录（<name>/SKILL.md）→ 之后可 /<name> 调用
+   · 临时：复制四份正文备用，不写盘
 ```
 
-> 可选升级：若长会话里人设反复掉线，可把角色卡+预设额外写进 `CLAUDE.md` 保证每轮在线（非默认）。机制与"为什么没有钉住"见 [docs/05-loading-mechanism.md](docs/05-loading-mechanism.md)。
+### 第二段：演绎（Session B，全新干净）
+```
+1. 新起一个干净 session（关闭 code/search/data 类 skill，避免污染文风）
+2. 载入四件套：
+   · 已安装 → /rp-launcher-<name>（它依次拉起 character / preset / worldbook）
+   · 没安装 → 直接把四份正文粘进首轮上下文
+3. 输入首句剧情（含具体场景 + 动作），开跑
+4. 上下文被压缩后，重新 /rp-launcher-<name>
+```
 
-或使用 **元启动器**（一键检查）：
-```
-/skill rp-launcher
-```
+> 可选升级：若长会话里人设反复掉线，可把角色卡+预设额外写进 `CLAUDE.md` 保证每轮在线（非默认）。机制与"为什么没有钉住"见 [docs/05-loading-mechanism.md](docs/05-loading-mechanism.md)。完整 8 步工作流见 [docs/03-workflow.md](docs/03-workflow.md)。
 
 ---
 
