@@ -139,9 +139,9 @@ agent 将内容拆分为四大块：
 ```
 
 **安装后使用**（无"钉住"，见 [05-loading-mechanism.md](05-loading-mechanism.md)）：
-1. 会话开场 /rp-launcher，由它统一拉起 character + preset + worldbook
+1. 会话开场 /rp-launcher-<name>，由它统一拉起 character + preset + worldbook
 2. 按 `docs/03-workflow.md` 步骤 6 输入首句剧情，开始 RP
-3. 上下文被压缩后，重新 /rp-launcher
+3. 上下文被压缩后，重新 /rp-launcher-<name>
 
 **卸载**：不需要时，直接删除对应 skill 目录即可：
 - 删除 `<agent-skills-dir>/character-<name>/`
@@ -227,7 +227,7 @@ agent 将内容拆分为四大块：
 - [ ] 预设含文风锚和活文保障
 - [ ] 角色卡+预设合计 < 2500-3000 token（常驻层预算）
 - [ ] 每份 skill 的 `description` 含触发场景 + 专名（命中力 / 可发现性）
-- [ ] 已生成元启动器 rp-launcher，且填入了三个 skill 名
+- [ ] 已生成元启动器 rp-launcher-<name>，且填入了三个 skill 名
 - [ ] 三件套整体无机制残留
 
 全部勾选 = 审计通过。任一未勾选 = 回到对应步骤重新清洗。

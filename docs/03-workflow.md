@@ -71,12 +71,12 @@
 
 ```
 会话开场调用一次：
-  /rp-launcher
+  /rp-launcher-<name>
   → 它指示 agent 逐个调用：
       /character-<name>
       /preset-<name>
       /worldbook-<name>   （可选）
-三份正文随即进上下文并留存。被上下文压缩后，重新 /rp-launcher。
+三份正文随即进上下文并留存。被上下文压缩后，重新 /rp-launcher-<name>。
 ```
 
 **可选升级（非默认）**：若长会话里人设/文风反复掉线，把角色卡+预设额外写进项目根 `CLAUDE.md` / system prompt，那一层每轮必在。代价是始终占 token 且需与 skill 内容手动同步。
@@ -87,10 +87,10 @@
 
 ## 步骤 5：元启动器检查（可选）
 
-如果使用 `rp-launcher` skill：
+如果使用 `rp-launcher-<name>` skill：
 
 ```
-输入：/skill rp-launcher
+输入：/rp-launcher-<name>
 输出：确认角色+预设在常驻层、世界书已调用 / 提醒补齐
 ```
 
@@ -118,10 +118,10 @@
 
 | 问题 | 解法 |
 |------|------|
-| 角色开始像说明书 | 重新 /rp-launcher 拉起 preset；输入中重复文风词 |
+| 角色开始像说明书 | 重新 /rp-launcher-<name> 拉起 preset；输入中重复文风词 |
 | 角色全知 | 检查世界书是否过大；在输入中限定"Elara 不知道他是谁" |
 | 文风漂移 | 在输入中插入文风锚："继续 whimsical 的风格" |
-| 人设掉线（闲聊或压缩后） | 重新 /rp-launcher；频繁掉线则上 CLAUDE.md 可选升级 |
+| 人设掉线（闲聊或压缩后） | 重新 /rp-launcher-<name>；频繁掉线则上 CLAUDE.md 可选升级 |
 | 上下文稀释（> 10 轮） | 在输入中做微型总结："之前剧情：我们...现在..." |
 | 数值矛盾 | 放弃纯 Skill，上动态层 |
 
@@ -141,14 +141,14 @@
 
 开跑前：
 - [ ] 独立 session，无 code/search/data 类 skill
-- [ ] 开场 /rp-launcher 已拉起角色卡+预设（含 few-shot 与文风规则）
+- [ ] 开场 /rp-launcher-<name> 已拉起角色卡+预设（含 few-shot 与文风规则）
 - [ ] 世界书已拉起（如使用），< 1000 tokens
 - [ ] 首句输入含具体场景+动作
 
 运行中：
 - [ ] 每 5 轮主动总结一次剧情（防稀释）
 - [ ] 出现全知/漂移/矛盾时立即干预
-- [ ] 闲聊多轮或压缩后，确认人设仍在线，必要时重新 /rp-launcher
+- [ ] 闲聊多轮或压缩后，确认人设仍在线，必要时重新 /rp-launcher-<name>
 
 负向验收（至少跑一次）：
 - [ ] 越权全知测试通过（角色不编造未加载设定）

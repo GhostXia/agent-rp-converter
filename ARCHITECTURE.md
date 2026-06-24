@@ -45,7 +45,7 @@ Skill 系统的设计理念：
 ## 正确形态：三份独立 + 元启动器
 
 ```
-会话开场：/rp-launcher
+会话开场：/rp-launcher-<name>
    ├─→ 调用 skill: character-<name>   → 正文进上下文
    ├─→ 调用 skill: preset-<name>      → 正文进上下文
    └─→ 调用 skill: worldbook-<name>   → 正文进上下文（可选，懒加载）
@@ -67,8 +67,8 @@ Skill 系统的设计理念：
 如果用户想要"一键启动"，我们不捆内容，而是写一个 **薄壳层（thin shell）**：
 
 ```yaml
-# rp-launcher/SKILL.md
-name: rp-launcher
+# rp-launcher-<name>/SKILL.md
+name: rp-launcher-<name>
 description: 开始 RP 会话时确认装载就位。不携带内容，只做组合检查。
 ---
 当本 skill 被调用时，确认：
@@ -85,7 +85,7 @@ description: 开始 RP 会话时确认装载就位。不携带内容，只做组
 ## 数据流
 
 ```
-会话开场：/rp-launcher（一次性拉起）
+会话开场：/rp-launcher-<name>（一次性拉起）
     ├── 调用 character-<name> → 正文进上下文
     ├── 调用 preset-<name>    → 正文进上下文
     └── 调用 worldbook-<name> → 正文进上下文（可选）
